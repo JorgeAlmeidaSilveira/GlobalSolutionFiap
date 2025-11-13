@@ -47,7 +47,6 @@ body {
     align-items: center;
 }
 
-/* --- LINHA 1: Input --- */
 .form-row-top {
     width: 100%;
 }
@@ -90,7 +89,7 @@ body {
 }
 
 
-/* --- LINHA 2: Controles --- */
+/* Grupo Categoria + Botões */
 .form-row-bottom {
     display: flex;
     justify-content: space-between; /* Separa Categoria do botão Adicionar */
@@ -99,7 +98,6 @@ body {
     gap: 1rem;
 }
 
-/* Grupo Categoria + Botões */
 .priority-group {
     display: flex;
     align-items: center;
@@ -226,12 +224,16 @@ body {
 .task-details {
     flex-grow: 1;
     margin-left: 1rem;
+    min-width: 0; 
 }
 
 .task-name {
     font-size: 1.1rem;
     color: #E0E0E0;
     transition: all 0.3s ease;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* --- Estilo de Tags/Categorias --- */
