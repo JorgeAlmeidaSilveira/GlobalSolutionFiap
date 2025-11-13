@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowSpace - Tasks</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script type="text/javascript" src="./javascript/script.js" defer></script>
+</head>
+
+<body>
+
+    <main class="tasks-container">
+
+        <header class="tasks-header">
+            <h1>Minhas Tarefas</h1>
+            <p>Organize seu dia e mantenha o foco.</p>
+        </header>
+
+        <form class="new-task-form">
+            
+            <div class="form-row-top">
+                <input type="text" id="new-task-input" placeholder="Adicionar uma nova tarefa..." required>
+            </div>
+
+            <div class="form-row-bottom">
+                
+                <div class="priority-group">
+                    <span class="category-label">Categoria</span>
+                    
+                    <div class="priority-buttons">
+                        <button type="button" class="p-btn p-baixa selected" data-value="Baixa">Baixa</button>
+                        <button type="button" class="p-btn p-media" data-value="Média">Média</button>
+                        <button type="button" class="p-btn p-alta" data-value="Alta">Alta</button>
+                    </div>
+                </div>
+
+                <input type="hidden" id="selected-priority" value="Baixa">
+
+                <button type="submit" class="add-btn" title="Adicionar tarefa">
+                    <i class="fa-solid fa-plus"></i> Adicionar
+                </button>
+            </div>
+
+        </form>
+
+        <section class="task-list-section">
+            
+            <div class="list-header">
+                <h2>Tarefas Ativas</h2>
+                <button id="delete-completed-btn" class="btn-limpar">
+                    <i class="fa-solid fa-broom"></i> Limpar Concluídas
+                </button>
+            </div>
+
+            <ul class="task-list">
+<!-- Estrutura base que será clonada via JavaScript
+                <li class="task-item">
+                    <label class="task-checkbox">
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div class="task-details">
+                        <p class="task-name">Descrição da tarefa</p>
+                        <span class="task-category high-priority">Categoria e priorização</span>
+                    </div>
+                    <button class="task-delete-btn" title="Excluir tarefa">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </li>
+-->
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+
+</html>

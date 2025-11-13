@@ -1,0 +1,387 @@
+/* --- Reset Básico e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #0F101A; /* Fundo escuro principal */
+    color: #E0E0E0; /* Texto claro */
+}
+
+/* --- Container Principal das Tarefas --- */
+.tasks-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 1rem;
+}
+
+.tasks-header {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.tasks-header h1 {
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+}
+
+.tasks-header p {
+    font-size: 1.1rem;
+    color: #A0A0A0;
+}
+
+/* --- Container do Formulário --- */
+.new-task-form {
+    display: flex;
+    flex-direction: column; /* Empilha as linhas verticalmente */
+    gap: 1rem; /* Espaço entre a linha do input e a linha dos botões */
+    background-color: #161823; /* Opcional: fundo mais destacado para o form */
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #2a2c3e;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+/* --- LINHA 1: Input --- */
+.form-row-top {
+    width: 100%;
+}
+
+.new-task-form input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #0F101A;
+    border: 1px solid #2a2c3e;
+    border-radius: 8px;
+    color: #E0E0E0;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.new-task-form input[type="text"]:focus {
+    border-color: #8A63D2;
+    box-shadow: 0 0 0 3px rgba(138, 99, 210, 0.3);
+
+}
+
+.new-task-form button[type="submit"] {
+    padding: 0.9rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #8A63D2; /* Cor principal do botão */
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.new-task-form button[type="submit"]:hover {
+    background-color: #7A58B8;
+}
+
+
+/* --- LINHA 2: Controles --- */
+.form-row-bottom {
+    display: flex;
+    justify-content: space-between; /* Separa Categoria do botão Adicionar */
+    align-items: center; /* Alinha verticalmente */
+    flex-wrap: wrap; /* Permite quebrar linha em celulares */
+    gap: 1rem;
+}
+
+/* Grupo Categoria + Botões */
+.priority-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Distância entre o texto "Categoria" e os botões */
+}
+
+.category-label {
+    color: #A0A0A0;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* Container dos Botões de Prioridade */
+.priority-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* Estilo Base dos Botões */
+.p-btn {
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    color: #A0A0A0;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+/* Estados e Cores */
+.p-btn:hover { opacity: 1; }
+
+/* --- CORES ESPECÍFICAS (Estado Inativo - Apenas Borda e Texto) --- */
+.p-btn.p-baixa { border-color: #8AD2FF; color: #8AD2FF; }
+.p-btn.p-media { border-color: #FFCA3A; color: #FFCA3A; }
+.p-btn.p-alta { border-color: #FF595E; color: #FF595E; }
+
+.p-btn.p-baixa.selected {
+    background-color: #8AD2FF;
+    color: #161823; /* Texto escuro para contraste */
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(138, 210, 255, 0.4); /* Brilho opcional */
+}
+
+.p-btn.p-media.selected {
+    background-color: #FFCA3A;
+    color: #161823;
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(255, 202, 58, 0.4);
+}
+
+.p-btn.p-alta.selected {
+    background-color: #FF595E;
+    color: #FFFFFF; /* Texto branco para contraste no vermelho */
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(255, 89, 94, 0.4);
+}
+/* Botão de Adicionar */
+.add-btn {
+    padding: 0.7rem 1.5rem;
+    background-color: #8A63D2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.add-btn:hover {
+    background-color: #7A58B8;
+}
+
+/* --- Cores das Tags de Prioridade --- */
+/* Base da tag */
+.task-category {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Seção da Lista de Tarefas --- */
+.task-list-section h2 {
+    font-size: 1.5rem;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #2a2c3e;
+}
+
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* --- Item Individual da Tarefa --- */
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1rem;
+    background-color: #161823;
+    border: 1px solid #2a2c3e;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #1F212E;
+}
+
+.task-details {
+    flex-grow: 1;
+    margin-left: 1rem;
+}
+
+.task-name {
+    font-size: 1.1rem;
+    color: #E0E0E0;
+    transition: all 0.3s ease;
+}
+
+/* --- Estilo de Tags/Categorias --- */
+.task-category {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 12px;
+    background-color: #333;
+    color: #BBB;
+    margin-top: 0.25rem;
+    display: inline-block;
+}
+
+.task-category.high-priority {
+    background-color: rgba(255, 89, 94, 0.15);
+    color: #FF595E;
+    border: 1px solid rgba(255, 89, 94, 0.3);
+}
+
+/* Prioridade Média (Amarelo/Laranja) */
+.task-category.medium-priority {
+    background-color: rgba(255, 202, 58, 0.15);
+    color: #FFCA3A;
+    border: 1px solid rgba(255, 202, 58, 0.3);
+}
+
+/* Prioridade Baixa (Azul) */
+.task-category.low-priority {
+    background-color: rgba(138, 201, 38, 0.15);
+    color: #8AD2FF;
+    border: 1px solid rgba(138, 201, 38, 0.3);
+}
+
+/* --- Botão de Excluir --- */
+.task-delete-btn {
+    background: none;
+    border: none;
+    color: #6a6e8c;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 5px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.task-delete-btn:hover {
+    color: #FF8A8A; /* Vermelho para exclusão */
+    background-color: rgba(255, 100, 100, 0.1);
+}
+
+/* --- Checkbox Customizado --- */
+.task-checkbox {
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2rem;
+    user-select: none;
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.task-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-color: #2a2c3e;
+    border-radius: 50%; /* Checkbox redondo */
+    transition: background-color 0.3s ease;
+}
+
+.task-checkbox:hover input ~ .checkmark {
+    background-color: #4a4d6b;
+}
+
+.task-checkbox input:checked ~ .checkmark {
+    background-color: #8A63D2;
+}
+
+/* Ícone de check (V) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.task-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* --- Estilo da Tarefa Concluída --- */
+.task-item.completed .task-name {
+    text-decoration: line-through;
+    color: #6a6e8c;
+}
+
+/* --- Cabeçalho da Lista (Título e Botão) --- */
+.list-header {
+    display: flex;
+    justify-content: space-between; /* Título na esq, Botão na dir */
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #2a2c3e; /* A linha divisória agora fica aqui */
+}
+
+.list-header h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none; /* Remove a borda antiga do h2 */
+    font-size: 1.5rem;
+}
+
+/* --- Botão de Limpar Concluídas --- */
+.btn-limpar {
+    background: transparent;
+    border: 1px solid #2a2c3e;
+    color: #6a6e8c; /* Cor discreta (cinza azulado) */
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-limpar:hover {
+    color: #FF595E; /* Vermelho ao passar o mouse */
+    border-color: #FF595E;
+    background-color: rgba(255, 89, 94, 0.1);
+}
+
+.btn-limpar:active {
+    transform: scale(0.98);
+}
