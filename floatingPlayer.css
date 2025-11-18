@@ -1,0 +1,189 @@
+:root {
+    --bg-dark-primary: #10111A;   /* Fundo escuro (atrás do widget) */
+    --bg-dark-secondary: #161823; /* Fundo do widget */
+    --border-color: #2a2c3e;
+    --text-light: #E0E0E0;
+    --text-muted: #d5d7e4;
+    --accent-purple: #8A63D2;
+    --accent-blue: #8AD2FF;
+}
+
+#music-widget {
+    /* --- O EFEITO FLUTUANTE --- */
+    position: fixed;
+    z-index: 1000;
+    bottom: 10px;
+    right: 10px;
+    max-height: 90vh; /* Evita ocupar a tela toda */
+    
+    /* --- VISUAL --- */
+    background-color: var(--bg-dark-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    
+    /* Transição para diminuir */
+    transition: all 0.3s ease-in-out;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.4rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.widget-header h4 {
+    margin: 0;
+    color: var(--text-light);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.widget-header h4 i {
+    color: var(--accent-purple);
+    margin-right: 8px;
+}
+
+#minimize-widget-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+#minimize-widget-btn:hover { color: var(--text-light); }
+
+.widget-body {
+    padding: 0.5rem;
+}
+
+.current-track-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.track-thumbnail {
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-dark-primary);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+}
+
+.track-info #track-title {
+    font-weight: 600;
+    color: var(--text-light);
+    margin: 0;
+}
+.track-info #track-artist {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.media-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.media-controls button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    margin-bottom: 0.7rem;
+}
+.media-controls button:hover { color: var(--text-light); }
+
+#play-pause-btn {
+    width: 45px;
+    height: 45px;
+    background-color: var(--accent-purple);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.1rem;
+}
+#play-pause-btn:hover { background-color: #7A58B8; }
+
+.preset-sounds h5, .custom-music h5 {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.3rem;
+    margin-top: 0.3rem;
+}
+
+.preset-sounds ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.3rem;
+    margin-top: 5px;
+}
+
+.preset-btn {
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 0.5rem 0.3rem;
+    flex-grow: 1; /* Faz ocupar espaço igual */
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+.preset-btn:hover {
+    color: var(--text-light);
+    border-color: var(--accent-blue);
+    background-color: #1c1f2e;
+}
+
+#custom-music-form {
+    display: flex;
+}
+
+#youtube-link-input {
+    flex-grow: 1;
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    border-right: none;
+    padding: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    border-radius: 6px 0 0 6px;
+    outline: none;
+}
+#youtube-link-input:focus {
+    border-color: var(--accent-purple);
+}
+
+#custom-music-form button {
+    background-color: var(--bg-dark-primary);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    color: var(--text-muted);
+    padding: 0 0.8rem;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+#custom-music-form button:hover {
+    color: var(--accent-purple);
+}
