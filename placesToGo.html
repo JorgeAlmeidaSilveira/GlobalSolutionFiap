@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowSpace - Guia exploratório</title>
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="./placesToGo.css">
+    <script src="./placesToGo.js"></script>
+</head>
+
+<body>
+
+    <header class="dashboard-header">
+        <div class="dashboard-header">
+            <a href="./main.html" class="header-logo">
+                <img src="./img/logobranco.png" alt="Logo FlowSpace" class="logo">
+                <span class="app-name">FlowSpace</span>
+            </a>
+        </div>
+        <nav class="header-nav">
+            <a href="./dashboard.html">Dashboard</a>
+            <a href="./tasks.html">Tarefas</a>
+            <a href="./selfConnection.html">Pausas guiadas</a>
+            <a href="#" class="active">Guia exploratório</a>
+        </nav>
+        <div class="user-profile">
+            <i class="fas fa-user-circle fa-lg" style="margin-right: 15px;"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </header>
+
+    <div class="main-text">
+        <h2>Explorar SP: Bem-Estar na Cidade</h2>
+        <p>Encontre o seu refúgio para recarregar as energias em São Paulo.</p>
+    </div>
+
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="natureza">Natureza</button>
+        <button class="filter-btn" data-filter="massagem">Massagem</button>
+        <button class="filter-btn" data-filter="grupo">Em Grupo</button>
+        <button class="filter-btn" data-filter="cultura">Cultura</button>
+    </div>
+
+    <main class="resource-grid">
+
+        <div class="card" data-tags="natureza cultura" data-target="details-passeios">
+            <div class="card-image-placeholder img-passeio"></div>
+            <div class="card-body">
+                <h3>Sugestões de Lugares para Passeios</h3>
+                <p class="tag-label">Free Exploration</p>
+                <p>Descubra parques e bairros icônicos para um momento de pausa individual.</p>
+                <a href="#" class="btn-access">Ver Ideias</a>
+            </div>
+        </div>
+
+        <div class="card" data-tags="grupo social" data-target="details-grupos">
+            <div class="card-image-placeholder img-grupo"></div>
+            <div class="card-body">
+                <h3>Passeios em Grupo em São Paulo</h3>
+                <p class="tag-label">Conexão</p>
+                <p>Eventos e encontros organizados para promover o bem-estar social.</p>
+                <a href="#" class="btn-access">Agenda de Grupos</a>
+            </div>
+        </div>
+
+        <div class="card" data-tags="grupo natureza fisico" data-target="details-caminhadas">
+            <div class="card-image-placeholder img-caminhada"></div>
+            <div class="card-body">
+                <h3>Caminhadas Guiadas em Grupo</h3>
+                <p class="tag-label">Físico & Social</p>
+                <p>Roteiros e grupos de caminhada por parques e áreas verdes da cidade.</p>
+                <a href="#" class="btn-access">Ver Roteiros</a>
+            </div>
+        </div>
+
+        <div class="card" data-tags="massagem fisico" data-target="details-massagem">
+            <div class="card-image-placeholder img-massagem"></div>
+            <div class="card-body">
+                <h3>Locais de Massagem e Relaxamento</h3>
+                <p class="tag-label">Relaxamento</p>
+                <p>Sugestões de estabelecimentos parceiros com foco em bem-estar e alívio de estresse.</p>
+                <a href="#" class="btn-access">Ver Locais</a>
+            </div>
+        </div>
+
+        <div class="card" data-tags="cultura individual" data-target="details-livrarias">
+            <div class="card-image-placeholder img-livraria"></div>
+            <div class="card-body">
+                <h3>Cafés e Livrarias Acolhedoras</h3>
+                <p class="tag-label">Pausa Individual</p>
+                <p>Espaços tranquilos para leitura, reflexão e descompressão.</p>
+                <a href="#" class="btn-access">Ver Locais</a>
+            </div>
+        </div>
+
+        <div class="card" data-tags="cultura individual" data-target="details-museus">
+            <div class="card-image-placeholder img-museu"></div>
+            <div class="card-body">
+                <h3>Museus e Galerias de Arte</h3>
+                <p class="tag-label">Mente & Criatividade</p>
+                <p>Nutra sua mente e estimule a criatividade com visitas culturais.</p>
+                <a href="#" class="btn-access">Ver Dicas</a>
+            </div>
+        </div>
+
+    </main>
+
+    <section id="detail-view" class="hidden content-details">
+        <a href="#" id="back-to-grid" class="back-link"><i class="fas fa-arrow-left"></i> Voltar ao Hub</a>
+
+        <div id="detail-content" class="resource-list">
+        </div>
+    </section>
+
+    <div id="hidden-content" style="display: none;">
+
+        <div id="details-passeios">
+            <div class="carousel-wrapper">
+
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>1/2 | Roteiros de Passeios em SP</h3>
+                        <p>Deslize para ver as opções! Encontre o seu refúgio para uma pausa individual.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Como funciona?</h3>
+                        <p>Nossas sugestões visam nutrir sua mente. Escolha um lugar, planeje sua visita e aproveite o
+                            tempo a sós.</p>
+                        <p class="details-tags">Foco: Introspecção e Descanso</p>
+                    </div>
+                </div>
+
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>2/2 | Opções de Roteiro</h3>
+                        <p>Escolha o destino que melhor se adapta à sua energia atual.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Parque Ibirapuera: Trilha de Meditação</h3>
+                        <p>O Parque oferece diversas trilhas e áreas verdes ideais para uma caminhada consciente ou
+                            meditação ao ar livre.</p>
+                        <p class="details-tags">Região Sul |</p>
+                        <a href="#" class="btn-detail">Ver Detalhes</a>
+                    </div>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Avenida Paulista: Pausa Cultural</h3>
+                        <p>Visite a área do MASP e exercite o mindfulness urbano.</p>
+                        <p class="details-tags">Região Central |</p>
+                        <a href="#" class="btn-detail">Ver Locais</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="details-grupos">
+            <div class="carousel-wrapper">
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>1/1 | Encontros de Conexão</h3>
+                        <p>Eventos sociais e atividades em grupo para fortalecer a conexão.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Encontro no Mirante 9 de Julho</h3>
+                        <p>Café e bate-papo informal sobre gestão de estresse no trabalho.</p>
+                        <p class="details-tags">Bela Vista | Próximo: 05/Dez</p>
+                        <a href="#" class="btn-detail">Agenda</a>
+                    </div>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Rodada de Leitura no Parque Villa-Lobos</h3>
+                        <p>Traga seu livro e participe de uma breve discussão sobre bem-estar.</p>
+                        <p class="details-tags">Região Oeste | Próximo: 15/Dez</p>
+                        <a href="#" class="btn-detail">Detalhes do Evento</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="details-caminhadas">
+            <div class="carousel-wrapper">
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>1/1 | Roteiros de Caminhada</h3>
+                        <p>Percursos em parques com foco em atividade física e natureza.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Circuito da Água (Caminhada Leve)</h3>
+                        <p>Caminhada de baixo impacto em torno de lagos, ideal para iniciantes no Parque Ecológico do
+                            Tietê.</p>
+                        <p class="details-tags">Parque Ecológico do Tietê | 45 min</p>
+                        <a href="#" class="btn-detail">Inscrição</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="details-massagem">
+            <div class="carousel-wrapper">
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>1/1 | Spas e Clínicas Parceiras</h3>
+                        <p>Locais de alta qualidade com descontos exclusivos FlowSpace.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Kyoto Spa e Massoterapia</h3>
+                        <p>Especializada em Shiatsu e massagem relaxante na região de Pinheiros.</p>
+                        <p class="details-tags">Pinheiros | Código: FLOW20</p>
+                        <a href="#" class="btn-detail">Ver Locais</a>
+                    </div>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Lótus Terapias Integrativas</h3>
+                        <p>Atendimento focado em liberação miofascial e terapias para postura em Vila Olímpia.</p>
+                        <p class="details-tags">Vila Olímpia | Código: FLOW20</p>
+                        <a href="#" class="btn-detail">Ver Locais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="details-livrarias">
+            <div class="carousel-wrapper">
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>1/1 | Refúgios Acolhedores</h3>
+                        <p>Espaços tranquilos para momentos de introspecção.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Livraria da Vila - Jardins</h3>
+                        <p>Sugestão para café, leitura e tempo de qualidade sozinho.</p>
+                        <p class="details-tags">Jardins | Tempo livre</p>
+                        <a href="#" class="btn-detail">Ver Locais</a>
+                    </div>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>King's Cross Rock Bar & Coffee</h3>
+                        <p>Ambiente temático para descompressão com boa música e café.</p>
+                        <p class="details-tags">Vila Mariana | Tempo livre</p>
+                        <a href="#" class="btn-detail">Ver Locais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="details-museus">
+            <div class="carousel-wrapper">
+                <div class="carousel-page">
+                    <header class="detail-header">
+                        <h3>1/1 | Museus em Destaque</h3>
+                        <p>Nutra sua mente e estimule a criatividade.</p>
+                    </header>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>MASP (Museu de Arte de SP)</h3>
+                        <p>Visita autoguiada para praticar o foco e a observação detalhada.</p>
+                        <p class="details-tags">Av. Paulista | Entrada: Consultar</p>
+                        <a href="#" class="btn-detail">Planejar Visita</a>
+                    </div>
+                    <hr>
+                    <div class="detail-item">
+                        <h3>Pinacoteca de São Paulo</h3>
+                        <p>Coleção fantástica para estimular a reflexão e o senso estético.</p>
+                        <p class="details-tags">Luz | Entrada: Consultar</p>
+                        <a href="#" class="btn-detail">Planejar Visita</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,3 +1,30 @@
+/* =================================================================
+    1. VARIÁVEIS DE COR E ESTILOS GERAIS
+    ================================================================= */
+:root {
+    --color-dark-bg: #1e1e2d;       /* Fundo Escuro Principal */
+    --color-dark-card: #27293d;      /* Fundo dos Cards */
+    --color-text-light: #f0f0f0;     /* Texto Claro */
+    --color-text-subtle: #a0a0b0;    /* Texto Secundário */
+    --color-primary-blue: #007bff;   /* Azul Primário para botões e destaque */
+    --header-height: 50px;           /* Altura fixa do cabeçalho */
+
+    --accent-green: #34d399; /* Accent secundário: Verde Menta (detalhes e tags) */
+}
+
+/* Estilo do Body para o tema escuro */
+body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-light);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+
 /* --- Reset Básico e Estilos Globais --- */
 * {
     margin: 0;
@@ -5,16 +32,83 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #0F101A; /* Fundo escuro principal */
-    color: #E0E0E0; /* Texto claro */
+/* =================================================================
+    2. HEADER (CABEÇALHO SUPERIOR)
+    ================================================================= */
+.dashboard-header {
+    min-height: var(--header-height);
+    height: auto;
+    background-color: var(--color-dark-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+/* Placeholder para o logo */
+.logo-placeholder {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary-blue);
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; 
+    margin-right: 10px;
+    border-radius: 0; 
+}
+
+.app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-nav a {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+.header-nav a:hover,
+.header-nav a.active {
+    color: var(--color-primary-blue);
+    border-bottom: 2px solid var(--color-primary-blue);
+}
+
+.user-profile {
+    color: var(--color-text-subtle);
+}
+.user-profile i {
+    cursor: pointer;
+}
+
+
+/* =================================================================
+    3. ESTILIZACAO GERAL
+    ================================================================= */
 /* --- Container Principal das Tarefas --- */
 .tasks-container {
-    max-width: 800px;
+    max-width: 80rem;
+    width: 100%;
     margin: auto;
+    margin-top: 0.3rem;
     padding: 1rem;
 }
 
@@ -31,7 +125,7 @@ body {
 
 .tasks-header p {
     font-size: 1.1rem;
-    color: #A0A0A0;
+    color: var(--accent-green)
 }
 
 /* --- Container do Formulário --- */
@@ -105,7 +199,7 @@ body {
 }
 
 .category-label {
-    color: #A0A0A0;
+    color: var(--color-text-light);
     font-weight: 600;
     font-size: 0.95rem;
 }
@@ -367,7 +461,7 @@ body {
 .btn-limpar {
     background: transparent;
     border: 1px solid #2a2c3e;
-    color: #6a6e8c; /* Cor discreta (cinza azulado) */
+    color: var(--color-text-light); /* Cor discreta (cinza azulado) */
     padding: 0.5rem 1rem;
     border-radius: 6px;
     font-size: 0.85rem;

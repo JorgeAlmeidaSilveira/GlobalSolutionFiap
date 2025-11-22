@@ -1,0 +1,458 @@
+/* =================================================================
+    1. VARIÁVEIS DE COR E ESTILOS GERAIS
+    ================================================================= */
+:root {
+    --color-dark-bg: #1e1e2d;       /* Fundo Escuro Principal */
+    --color-dark-card: #27293d;      /* Fundo dos Cards */
+    --color-text-light: #f0f0f0;     /* Texto Claro */
+    --color-text-subtle: #a0a0b0;    /* Texto Secundário */
+    --color-primary-blue: #007bff;   /* Azul Primário para botões e destaque */
+    --color-focus-highlight: #3498db; /* Azul Brilhante para Timer (Foco) */
+    --color-focus-break: #2ecc71;    /* Verde para a Pausa (Relaxamento) */
+    --header-height: 50px;           /* Altura fixa do cabeçalho */
+    --color-notification-bg: #5a7d9b; /* Variável global para o fundo da notificação */
+}
+
+/* Estilo do Body para o tema escuro */
+body.dark-mode {
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-light);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+
+/* =================================================================
+    2. HEADER (CABEÇALHO SUPERIOR)
+    ================================================================= */
+.dashboard-header {
+    min-height: var(--header-height);
+    height: auto;
+    background-color: var(--color-dark-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+/* Placeholder para o logo */
+.logo-placeholder {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary-blue);
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; 
+    margin-right: 10px;
+    border-radius: 0; 
+}
+
+.app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-nav a {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+.header-nav a:hover,
+.header-nav a.active {
+    color: var(--color-primary-blue);
+    border-bottom: 2px solid var(--color-primary-blue);
+}
+
+.user-profile {
+    color: var(--color-text-subtle);
+}
+.user-profile i {
+    cursor: pointer;
+}
+
+
+/* =================================================================
+    3. LAYOUT PRINCIPAL (3 COLUNAS)
+    ================================================================= */
+.dashboard-layout {
+    flex-grow: 1; 
+    
+    /* Define a grade (3 Colunas: 80px | 1fr | 300px) */
+    display: grid;
+    grid-template-columns: 80px 1fr 300px; 
+    gap: 20px;
+    padding: 20px;
+    
+    height: calc(100vh - var(--header-height) - 40px); 
+    overflow: hidden;
+}
+
+/* Estilo dos Cards em Geral */
+.main-content > div,
+.sidebar-right > div,
+.sidebar-left {
+    background-color: var(--color-dark-card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* =================================================================
+    4. SIDEBAR ESQUERDA (ÍCONES)
+    ================================================================= */
+.sidebar-left {
+    padding: 0;
+    height: 100%;
+}
+.sidebar-menu a {
+    display: block;
+    color: var(--color-text-subtle);
+    padding: 15px;
+    text-align: center;
+    font-size: 1.4rem;
+    transition: background-color 0.2s, color 0.2s;
+}
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: #34374b;
+    color: var(--color-text-light);
+}
+
+/* =================================================================
+    5. CONTEÚDO PRINCIPAL (main-content)
+    ================================================================= */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto; 
+    padding-right: 10px; 
+}
+
+/* ---------------------- FOCUS TIMER (Círculo de Progresso) ---------------------- */
+.focus-timer-card {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.timer-circle-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 30px auto;
+}
+
+.timer-progress-svg {
+    transform: rotate(-90deg); /* Começa no topo */
+}
+
+.timer-track {
+    fill: none;
+    stroke: #34374b; /* Cor de fundo da trilha */
+    stroke-width: 10;
+}
+
+.timer-progress {
+    fill: none;
+    stroke: var(--color-focus-highlight); /* Cor do progresso (Azul) */
+    stroke-width: 10;
+    stroke-linecap: round;
+    /* Transição suave para o efeito de preenchimento e mudança de cor */
+    transition: stroke-dashoffset 1s linear, stroke 0.5s ease; 
+    /* 2 * PI * r, onde r=90 é a circunferência do círculo */
+    stroke-dasharray: 565.48;
+    stroke-dashoffset: 565.48; /* Inicialmente 100% preenchido (invisível) */
+}
+
+/* Estado de Pausa (O JavaScript adiciona o atributo data-mode="break") */
+.focus-timer-card[data-mode="break"] .timer-progress {
+    stroke: var(--color-focus-break); /* Muda para Verde durante a pausa */
+}
+
+.timer-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.timer-display {
+    font-size: 3rem; 
+    font-weight: 700;
+    color: var(--color-focus-highlight);
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.5); 
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+.timer-message {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--color-text-subtle);
+}
+
+/* Transição do Display para Pausa */
+.focus-timer-card[data-mode="break"] .timer-display {
+    color: var(--color-focus-break);
+    text-shadow: 0 0 10px rgba(46, 204, 113, 0.5); 
+}
+
+
+.btn-timer {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+.btn-timer:active {
+    transform: translateY(1px);
+}
+.btn-start {
+    background-color: var(--color-primary-blue);
+    color: white;
+    margin-right: 15px;
+}
+.btn-reset {
+    background-color: var(--color-text-subtle);
+    color: var(--color-dark-bg);
+}
+
+/* ---------------------- MOOD TRACKER ---------------------- */
+.mood-tracker-card h4 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+.mood-options {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.mood-option {
+    /* CORREÇÃO: Fundo transparente por padrão para não iniciar selecionado */
+    background-color: transparent; 
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-subtle);
+    flex-grow: 1;
+    /* Adiciona uma borda sutil para que os botões se destaquem do fundo do card */
+    border: 1px solid #34374b;
+    transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+.mood-option i {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+.mood-option.active {
+    background-color: var(--color-primary-blue);
+    color: white;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    border: 1px solid var(--color-primary-blue); /* Borda na cor ativa */
+}
+.mood-option:hover {
+    transform: translateY(-2px);
+    background-color: #34374b; /* Fundo sutil ao passar o mouse */
+}
+.mood-option.active:hover {
+    transform: translateY(0);
+    background-color: var(--color-primary-blue); /* Mantém o fundo ativo */
+}
+
+/* REMOVIDO: Estilos do .mood-feedback (texto verde em baixo) */
+
+
+/* ---------------------- MUSIC CARD (Youtube Iframe) ---------------------- */
+.music-card {
+    display: flex;
+    flex-direction: column;
+}
+.music-card h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.youtube-player-container {
+    position: relative;
+    width: 100%;
+    /* Define a proporção 16:9 para o iframe */
+    padding-bottom: 56.25%; 
+    height: 0;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#youtube-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.music-info {
+    text-align: center;
+}
+.track-name {
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-text-light);
+}
+.track-artist {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-subtle);
+}
+
+/* =================================================================
+    6. SIDEBAR DIREITA (AGENDA/NOTAS)
+    ================================================================= */
+.sidebar-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto; 
+    padding-right: 10px;
+}
+
+.agenda-card h4, .notes-card h4 {
+    border-bottom: 1px solid #34374b;
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Layout em grade para Agenda */
+.event-item {
+    display: grid;
+    grid-template-columns: 60px 50px 1fr auto; /* Time | Duration | Title | Tag */
+    gap: 10px;
+    align-items: center;
+    font-size: 0.9rem;
+    padding: 8px 0;
+    border-bottom: 1px dashed #34374b50;
+}
+.event-item:last-child {
+    border-bottom: none;
+}
+.event-item .time {
+    font-weight: 600;
+    color: var(--color-text-light);
+}
+.event-item .duration {
+    color: var(--color-text-subtle);
+    font-size: 0.8rem;
+}
+.event-item .title {
+    color: var(--color-text-light);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.tag {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-dark-bg);
+    flex-shrink: 0;
+}
+.tag-pause { background-color: #f1c40f; } /* Amarelo */
+.tag-wellness { background-color: #2ecc71; } /* Verde Esmeralda */
+.tag-reuniao { background-color: #9b59b6; color: white; } /* Roxo */
+
+/* ---------------------- NOTAS ---------------------- */
+.notes-card {
+    flex-grow: 1;
+    min-height: 200px;
+}
+.notes-card textarea {
+    width: 100%;
+    height: calc(100% - 50px);
+    background-color: #34374b;
+    border: 1px solid #4a4d65;
+    border-radius: 8px;
+    color: var(--color-text-light);
+    padding: 15px;
+    resize: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+}
+
+/* =================================================================
+    ESTILOS PARA NOTIFICAÇÃO FLUTUANTE (TOAST)
+    ================================================================= */
+
+.app-notification {
+    /* Posição Fixa na tela */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999; /* Aumentado o z-index para garantir que fique acima de tudo */
+    
+    /* Estilo do Card */
+    /* CORREÇÃO APLICADA AQUI: Usando a variável global corrigida */
+    background-color: var(--color-notification-bg); 
+    color: var(--color-text-light); 
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    
+    /* Animação Inicial (escondido fora da tela) */
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    
+    /* Layout */
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    font-size: 0.9em;
+}
+
+.app-notification.show {
+    /* Estado visível */
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification-icon {
+    font-size: 1.2em;
+    margin-right: 10px;
+}

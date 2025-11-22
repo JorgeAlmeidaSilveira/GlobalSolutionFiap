@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
+/* =================================================================
+    1. VARIÁVEIS DE COR E ESTILOS GERAIS
+    ================================================================= */
+:root {
+    --color-dark-bg: #1e1e2d;       /* Fundo Escuro Principal */
+    --color-dark-card: #27293d;      /* Fundo dos Cards */
+    --color-text-light: #f0f0f0;     /* Texto Claro */
+    --color-text-subtle: #a0a0b0;    /* Texto Secundário */
+    --color-primary-blue: #007bff;   /* Azul Primário para botões e destaque */
+    --header-height: 50px;           /* Altura fixa do cabeçalho */
+
+    --accent-green: #34d399; /* Accent secundário: Verde Menta (detalhes e tags) */
+    --text-on-dark: #f1f5f9; /* Texto claro para fundos escuros */
+    --text-on-light: #363434; /* Texto escuro para fundos claros */
+}
+
+/* Estilo do Body para o tema escuro */
+body {
+    background-color: var(--color-dark-bg);
+    color: var(--text-on-light);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+
+iframe{
+    width: 100%;
+    height: 70px ;
+}
+
+/* =================================================================
+    2. HEADER (CABEÇALHO SUPERIOR)
+    ================================================================= */
+.dashboard-header {
+    min-height: var(--header-height);
+    height: auto;
+    background-color: var(--color-dark-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+/* Placeholder para o logo */
+.logo-placeholder {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary-blue);
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; 
+    margin-right: 10px;
+    border-radius: 0; 
+}
+
+.app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-nav a {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+.header-nav a:hover,
+.header-nav a.active {
+    color: var(--color-primary-blue);
+    border-bottom: 2px solid var(--color-primary-blue);
+    background-color: var(--color-dark-card);;
+}
+
+.user-profile {
+    color: var(--color-text-subtle);
+}
+.user-profile i {
+    cursor: pointer;
+}
+
+
+/* =================================================================
+    2. ESTILIZACAO GERAL
+    ================================================================= */
+.pause-cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cards-container{
+    width: 350px;
+    border: 2px solid rgb(245 222 179);
+    background-color: rgb(255, 237, 204,0.85);
+    border-radius: 30px;
+    margin: 10px;
+    overflow: hidden; /* Garante que a imagem siga o border-radius */
+    display: flex; /* Transforma o card em um flex container */
+    flex-direction: column; /* Organiza os itens do card em coluna (imagem, conteúdo) */
+}
+
+.cards-container:hover {
+    transform: translateY(-1px); /*A tradução transform: translateY(-5px); em CSS significa mover um elemento 5 pixels para cima no eixo vertical. A propriedade transform é usada para aplicar transformações (como mover, rotacionar ou redimensionar) a um elemento, e translateY especifica o movimento apenas no eixo vertical (Y). O valor negativo (-5px) inverte a direção normal do eixo, fazendo o elemento se mover para cima*/
+    box-shadow: 0 6px 12px rgba(0, 0, 0,0.8); /*Utilizado para criar sombra, dando um ar de profundidade*/
+}
+
+.card-itens{
+    margin: 0px 0px 5px 10px;
+    /*line-height: 15px;*/
+}
+
+.card-itens h3{
+    margin: 3px 0px 0px 1px;
+}
+
+.descricao{
+    margin: 2px 0px 2px 6px;
+    font-size: 15px;
+}
+
+.time{
+    margin: 2px 0px 12px 0px;
+}
+
+.time-play{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button{
+    width: 50px;
+    height: 40px;
+    border: none; /* Remova a borda padrão do botão */
+    border-radius: 15px;
+    margin: 3px 10px 10px 0px;
+    background-color: rgb(250, 213, 174);
+}
+
+.button img{
+    width: 20px;
+    margin: 10px 15px;
+}
+
+a:hover{
+    background-color: rgb(220, 220, 220);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgb(0, 0, 0,0.6); 
+    cursor: pointer;
+}
+
+.card-img img{
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+}
+
+span b {
+    font-size: 20px;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    line-height: 15px;
+    margin: 10px 0px 0px 0px;
+    color: rgb(255, 255, 255, 0.87);
+    padding: 15px;
+}
+
+.title h1{
+    margin: 0;
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    color: var(--text-on-dark);
+}
+
+.title h3{
+    font-weight: 200;
+    color: var(--accent-green);
+}

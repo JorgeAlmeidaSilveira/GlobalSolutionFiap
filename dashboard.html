@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowSpace - Dashboard</title>
+
+    <!-- Referência ao arquivo CSS externo -->
+    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="./floatingPlayer.css">
+
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Referencia ao arquivo JS externo-->
+    <script type="module" src="./dashboard.js"></script>
+    <script type="module" src="./floatingPlayer.js"></script>    
+</head>
+
+<body class="dark-mode">
+
+    <header class="dashboard-header">
+        <div class="dashboard-header">
+            <a href="./main.html" class="header-logo">
+                <img src="./img/logobranco.png" alt="Logo FlowSpace" class="logo">
+                <span class="app-name">FlowSpace</span>
+            </a>
+        </div>
+        <nav class="header-nav">
+            <a href="#" class="active">Dashboard</a>
+            <a href="./tasks.html">Tarefas</a>
+            <a href="./selfConnection.html">Pausas Guiadas</a>
+            <a href="./placesToGo.html">Guia exploratório</a>
+        </nav>
+        <div class="user-profile">
+            <i class="fas fa-user-circle fa-lg" style="margin-right: 15px;"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </header>
+
+    <!-- O elemento principal que define as 3 colunas -->
+    <main class="dashboard-layout">
+
+        <!-- COLUNA 1: MENU LATERAL ESQUERDO -->
+        <aside class="sidebar-left">
+            <div class="sidebar-menu">
+                <a href="#" class="active"><i class="fas fa-th-large"></i></a>
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-music"></i></a>
+                <a href="#"><i class="fas fa-book-open"></i></a>
+                <a href="#"><i class="fas fa-users"></i></a>
+            </div>
+        </aside>
+
+        <!-- COLUNA 2: CONTEÚDO PRINCIPAL (COM SCROLL VERTICAL) -->
+        <section class="main-content">
+
+            <!-- CARD 1: FOCUS TIMER (MODIFICADO COM SVG PARA PROGRESSO) -->
+            <div class="focus-timer-card" data-mode="focus">
+                <h4 id="timer-title">Focus Time</h4>
+                <div class="timer-circle-container">
+                    <!-- SVG para desenhar o círculo de progresso -->
+                    <svg class="timer-progress-svg" width="200" height="200" viewBox="0 0 200 200">
+                        <!-- Trilha do círculo (fundo) -->
+                        <circle class="timer-track" cx="100" cy="100" r="90"></circle>
+                        <!-- Progresso do círculo (preenchimento) -->
+                        <circle class="timer-progress" cx="100" cy="100" r="90"></circle>
+                    </svg>
+                    <div class="timer-text-overlay">
+                        <div class="timer-display" id="timer-display">25:00</div>
+                        <p class="timer-message" id="timer-message">Clique Start!</p>
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button class="btn-timer btn-start" id="btn-start"><i class="fas fa-play"></i> Start</button>
+                    <button class="btn-timer btn-reset" id="btn-reset"><i class="fas fa-redo"></i> Reset</button>
+                </div>
+            </div>
+
+            <!-- CARD 2: MOOD TRACKER (ADICIONADO ÁREA DE MENSAGEM) -->
+            <div class="mood-tracker-card">
+                <h4>Como se sente hoje?</h4>
+                <div class="mood-options" id="mood-options">
+                    <!-- Adicionado data-mood para o JS identificar -->
+
+                    <span class="mood-option" data-mood="otimo"><i class="far fa-smile"></i> Ótimo</span>
+                    <span class="mood-option" data-mood="feliz"><i class="far fa-heart"></i> Feliz</span>
+                    <span class="mood-option" data-mood="energizado"><i class="fas fa-bolt"></i> Energizado</span>
+                    <span class="mood-option" data-mood="normal"><i class="far fa-meh"></i> Normal</span>
+                    <span class="mood-option" data-mood="cansado"><i class="far fa-frown"></i> Cansado</span>
+                </div>
+                <!-- Área de feedback de áudio/texto -->
+                <audio id="tts-audio" style="display: none;"></audio>
+            </div>
+
+            <!-- CARD 3: SUA MÚSICA (MODIFICADO PARA YOUTUBE IFRAME) -->
+            <div class="music-card">
+                <h4>Relax Video (Live)</h4>
+                <div class="youtube-player-container">
+                    <iframe id="youtube-player" src="https://www.youtube.com/embed/skhroxL9ju8"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="music-info">
+                    <p class="track-name">Lo-Fi Study Beats Playlist</p>
+                    <p class="track-artist">Live Stream</p>
+                </div>
+
+        </section>
+
+        <!-- COLUNA 3: SIDEBAR DIREITA -->
+        <aside class="sidebar-right">
+            <!-- CARD 1: AGENDA -->
+            <div class="agenda-card">
+                <h4>Agenda <i class="fas fa-calendar-alt"></i></h4>
+                <div class="event-item">
+                    <span class="time">10:00 AM</span>
+                    <span class="duration">15 min</span>
+                    <span class="title">Pausa Ativa em Grupo</span>
+                    <span class="tag tag-pause">Pausa</span>
+                </div>
+                <div class="event-item">
+                    <span class="time">2:00 PM</span>
+                    <span class="duration">20 min</span>
+                    <span class="title">Sessão de Meditação</span>
+                    <span class="tag tag-wellness">Bem-estar</span>
+                </div>
+                <div class="event-item">
+                    <span class="time">4:00 PM</span>
+                    <span class="duration">1h</span>
+                    <span class="title">Reunião de Planejamento</span>
+                    <span class="tag tag-reuniao">Reunião</span>
+                </div>
+            </div>
+
+            <!-- CARD 2: ANOTAÇÕES RÁPIDAS -->
+            <div class="notes-card">
+                <h4>Anotações Rápidas</h4>
+                <textarea placeholder="Escreva suas ideias..."></textarea>
+            </div>
+
+
+            <!-- Bloco referente ao Floating Player-->
+            <div id="music-widget">
+                <header class="widget-header">
+                    <h4><i class="fa-solid fa-music"></i> Sons de Foco</h4>
+                    <button id="minimize-widget-btn" title="Minimizar">
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+                </header>
+
+                <!-- CORPO PRINCIPAL DO WIDGET -->
+                <div class="widget-body">
+
+                    <!-- Seção do Player Principal (O que está tocando) -->
+                    <section class="current-track-display">
+                        <div class="track-thumbnail">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <div class="track-info">
+                            <p id="track-title">Sons da Floresta</p>
+                            <span id="track-artist">Ambiente</span>
+                        </div>
+                    </section>
+
+                    <!-- Controles de Mídia -->
+                    <section class="media-controls">
+                        <button title="Anterior"><i class="fa-solid fa-backward-step"></i></button>
+                        <button id="play-pause-btn" title="Pausar" class="play-btn">
+                            <i class="fa-solid fa-pause"></i>
+                        </button>
+                        <button title="Próximo"><i class="fa-solid fa-forward-step"></i></button>
+                    </section>
+
+                    <!-- Lista de Sons Padrão -->
+                    <section class="preset-sounds">
+                        <h5>Pausas Guiadas</h5>
+                        <ul>
+                            <!-- O JS vai "ouvir" cliques nestes botões -->
+                            <li>
+                                <button class="preset-btn" data-track-title="Sons da Floresta">
+                                    <i class="fa-solid fa-leaf"></i> Natureza
+                                </button>
+                            </li>
+                            <li>
+                                <button class="preset-btn" data-track-title="Meditação Guiada">
+                                    <i class="fa-solid fa-person-praying"></i> Meditação
+                                </button>
+                            </li>
+                            <li>
+                                <button class="preset-btn" data-track-title="Ondas do Oceano">
+                                    <i class="fa-solid fa-water"></i> Oceano
+                                </button>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Adicionar Música Customizada -->
+                    <section class="custom-music">
+                        <h5>Sua Música (Link)</h5>
+                        <form id="custom-music-form">
+                            <input type="text" id="youtube-link-input" placeholder="Cole um link do YouTube Music...">
+                            <button type="submit" title="Tocar link">
+                                <i class="fa-solid fa-play"></i>
+                            </button>
+                        </form>
+                    </section>
+
+                </div> <!-- Fim do widget-body -->
+
+            </div> <!-- Fim do #music-widget -->
+
+        </aside>
+    </main>
+
+</body>
+
+</html>

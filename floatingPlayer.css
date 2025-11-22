@@ -11,10 +11,10 @@
 #music-widget {
     /* --- O EFEITO FLUTUANTE --- */
     position: fixed;
-    z-index: 1000;
-    bottom: 10px;
-    right: 10px;
+    bottom: 25px;
     max-height: 90vh; /* Evita ocupar a tela toda */
+    padding: 0.3rem;
+    right: 40px;
     
     /* --- VISUAL --- */
     background-color: var(--bg-dark-secondary);
@@ -24,7 +24,7 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     
     /* Transição para diminuir */
-    transition: all 0.3s ease-in-out;
+    transition: all 0.7s ease-in-out;
 }
 
 .widget-header {

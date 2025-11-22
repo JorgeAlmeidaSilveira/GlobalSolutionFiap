@@ -25,14 +25,18 @@ document.addEventListener("DOMContentLoaded", () => {
     minimizeBtn.addEventListener("click", () => {
        if (minimizeIcon.classList.contains("fa-angle-down")) {
             // Adiciona um efeito de "sumir"
-            musicWidget.style.height = "3rem";
+            musicWidget.style.height = "2rem";
             musicWidget.style.transform = "translateY(20px)";
+            musicWidget.style.padding = "0rem";
+            musicWidget.style.right = "50px";
             minimizeIcon.classList.remove("fa-angle-down");
             minimizeIcon.classList.add("fa-angle-up");
        } else {
             // Restaura o widget
             musicWidget.style.height = "auto";
             musicWidget.style.transform = "translateY(0)";
+            musicWidget.style.padding = "0.3rem";
+            musicWidget.style.right = "40px";
             minimizeIcon.classList.remove("fa-angle-up");
             minimizeIcon.classList.add("fa-angle-down");
        }

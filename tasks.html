@@ -4,20 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowSpace - Tasks</title>
+    <title>FlowSpace - Tarefas</title>
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <link rel="stylesheet" href="./tasks.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script type="text/javascript" src="./tasks.js" defer></script>
+    <script src="./tasks.js" defer></script>
 </head>
 
 <body>
+    <header class="dashboard-header">
+        <div class="dashboard-header">
+            <a href="./main.html" class="header-logo">
+                <i class="fa-solid fa-feather fallback-icon" style="display:none; margin-right: 10px; font-size: 1.5rem;"></i>
+                <img src="./img/logobranco.png" alt="Logo FlowSpace" class="logo">
+                <span class="app-name">FlowSpace</span>
+            </a>
+        </div>
+        <nav class="header-nav">
+            <a href="./dashboard.html">Dashboard</a>
+            <a href="#" class="active">Tarefas</a>
+            <a href="./selfConnection.html">Pausas guiadas</a>
+            <a href="./placesToGo.html">Guia exploratório</a>
+        </nav>
+        <div class="user-profile">
+            <i class="fas fa-user-circle fa-lg" style="margin-right: 15px;"></i>
+            <i class="fas fa-ellipsis-v"></i>
+        </div>
+    </header>
 
     <main class="tasks-container">
 
-        <header class="tasks-header">
+        <div class="tasks">
             <h1>Minhas Tarefas</h1>
             <p>Organize seu dia e mantenha o foco.</p>
-        </header>
+        </div>
 
         <form class="new-task-form">
             
@@ -56,7 +78,6 @@
             </div>
 
             <ul class="task-list">
-                <!-- As tarefas serão adicionadas aqui via JavaScript -->
             </ul>
         </section>
 

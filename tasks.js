@@ -69,13 +69,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const clickedElement = e.target;
         const taskItem = clickedElement.closest(".task-item");
         if (!taskItem) return;
-        if (clickedElement.closest(".task-delete-btn")) {taskItem.remove();}
-        else if (clickedElement.matches("input[type='checkbox']")) {
+        if (clickedElement.closest(".task-delete-btn")) {
+            taskItem.remove();
+        } else if (clickedElement.matches("input[type='checkbox']")) {
             taskItem.classList.toggle("completed");
             setTimeout(() => {
                 reorderTasksByPriority();
                 reorderTasksByChecked();
-            }, 300); 
+            }, 300);
         }
     });
 
@@ -86,14 +87,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (completedTasks.length > 0) {
             if (confirm("Tem certeza que deseja excluir todas as tarefas concluídas?")) {
-                completedTasks.forEach(task => {task.remove();})
+                completedTasks.forEach(task => {
+                    task.remove();
+                })
             }
         } else {
             alert("Nenhuma tarefa concluída para limpar!");
         }
     });
 
-   // Função de ordenacao por conclusao de item
+    // Função de ordenacao por conclusao de item
     function reorderTasksByChecked() {
         // Pega todos os itens atuais da lista (li)
         const itemsArray = Array.from(taskList.children);
@@ -105,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Se um está concluído e o outro não, o não-concluído vem primeiro
             if (aCompleted && !bCompleted) return 1; // a vai para o fim
             if (!aCompleted && bCompleted) return -1; // a vem para o começo
+            return 0; // Mantém a ordem se ambos forem iguais (concluídos ou não)
         });
 
         // Reinsere os itens na lista na nova ordem
@@ -115,12 +119,13 @@ document.addEventListener("DOMContentLoaded", function () {
     function reorderTasksByPriority() {
         // Pega todos os itens atuais da lista (li)
         const itemsArray = Array.from(taskList.children);
-    
+
         // Função auxiliar para descobrir o peso de uma tarefa
         const getWeight = (item) => {
             // Pega o texto dentro da etiqueta de categoria (ex: "Alta")
-            const priorityText = item.querySelector(".task-category").innerText.trim();
-        
+            // ✅ CORREÇÃO: Converte para MAIÚSCULO para garantir a comparação
+            const priorityText = item.querySelector(".task-category").innerText.trim().toUpperCase();
+
             if (priorityText === "ALTA") return 3;
             if (priorityText === "MÉDIA") return 2;
             if (priorityText === "BAIXA") return 1;
