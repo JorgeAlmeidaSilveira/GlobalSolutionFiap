@@ -1,0 +1,252 @@
+/* =================================================================
+    1. VARIÁVEIS DE COR E ESTILOS GERAIS
+    ================================================================= */
+:root {
+    --color-dark-bg: #1e1e2d;       /* Fundo Escuro Principal */
+    --color-dark-card: #27293d;      /* Fundo dos Cards */
+    --color-text-light: #f0f0f0;     /* Texto Claro */
+    --color-text-subtle: #a0a0b0;    /* Texto Secundário */
+    --color-primary-blue: #007bff;   /* Azul Primário para botões e destaque */
+    --header-height: 50px;           /* Altura fixa do cabeçalho */
+
+    --accent-green: #34d399; /* Accent secundário: Verde Menta (detalhes e tags) */
+}
+
+/* Estilo do Body para o tema escuro */
+body {
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-light);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh; 
+    overflow-x: hidden;
+}
+
+/* --- Reset Básico e Estilos Globais --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =================================================================
+    2. HEADER (CABEÇALHO SUPERIOR)
+    ================================================================= */
+.dashboard-header {
+    min-height: var(--header-height);
+    height: auto;
+    background-color: var(--color-dark-card);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-text-light);
+}
+
+/* Placeholder para o logo */
+.logo-placeholder {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-primary-blue);
+    border-radius: 6px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; 
+    margin-right: 10px;
+    border-radius: 0; 
+}
+
+.app-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-nav a {
+    color: var(--color-text-subtle);
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 5px 0;
+    transition: color 0.2s;
+}
+.header-nav a:hover,
+.header-nav a.active {
+    color: var(--color-primary-blue);
+    border-bottom: 2px solid var(--color-primary-blue);
+}
+
+.user-profile {
+    color: var(--color-text-subtle);
+}
+.user-profile i {
+    cursor: pointer;
+}
+
+/* =================================================================
+   3. CONTEÚDO PRINCIPAL (Main)
+   ================================================================= */
+main {
+    flex-grow: 1;
+    padding: 40px 20px;
+    max-width: 1200px; /* Limita a largura para não esticar demais */
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espaço entre os cards de apresentação */
+}
+
+/* =================================================================
+   4. SEÇÕES DE APRESENTAÇÃO (Estilo Card)
+   ================================================================= */
+.apresentacao {
+    background-color: var(--color-dark-card);
+    border-radius: var(--card-radius);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    transition: transform 0.3s ease;
+}
+
+.apresentacao:hover {
+    transform: translateY(-5px); /* Leve efeito ao passar o mouse */
+}
+
+/* Inverte a ordem (Texto - Imagem / Imagem - Texto) para ficar dinâmico */
+.apresentacao:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Conteúdo de Texto */
+.apresentacao__conteudo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.apresentacao__conteudo__titulo {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.titulo-destaque {
+    color: var(--color-primary-blue);
+}
+
+.apresentacao__conteudo__texto {
+    font-size: 1.1rem;
+    color: var(--color-text-subtle);
+    line-height: 1.6;
+}
+
+/* Links / Botões */
+.apresentacao__links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.apresentacao__links__subtitulo {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+}
+
+.apresentacao__links__navegacao {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px 24px;
+    width: 50%; /* Ou width fixo tipo 200px */
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+    
+    /* Estilo Botão Outline (Borda azul, fundo transparente) */
+    border: 2px solid var(--color-primary-blue);
+    color: var(--color-primary-blue);
+}
+
+.apresentacao__links__navegacao:hover {
+    background-color: var(--color-primary-blue);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);
+}
+
+/* Imagens */
+.apresentacao__imagem {
+    width: 300px;
+    height: 300px;
+    object-fit: cover; /* Corta a imagem para caber no quadrado sem distorcer */
+    border-radius: 50%; /* Deixa redondo (estilo perfil) */
+    border: 4px solid var(--color-primary-blue);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* =======================================
+   5. Footer
+   ======================================= */
+footer {
+    background-color: #212529; 
+    padding: 30px 0; 
+    text-align: center;
+    color: var(--color-text-light); 
+}
+
+/* =================================================================
+   6. RESPONSIVIDADE (Celulares e Tablets)
+   ================================================================= */
+@media (max-width: 900px) {
+    .header-nav {
+        display: none; /* Em um projeto real, aqui entraria um menu hambúrguer */
+    }
+
+    .apresentacao, 
+    .apresentacao:nth-child(even) {
+        flex-direction: column-reverse; /* Imagem em cima, texto embaixo */
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .apresentacao__imagem {
+        width: 200px;
+        height: 200px;
+    }
+
+    .apresentacao__links {
+        align-items: center;
+    }
+
+    .apresentacao__links__navegacao {
+        width: 100%; /* Botão ocupa largura total no mobile */
+        max-width: 300px;
+    }
+    
+    .apresentacao__conteudo__titulo {
+        font-size: 1.5rem;
+    }
+}
